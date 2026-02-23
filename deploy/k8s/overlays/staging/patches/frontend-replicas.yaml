@@ -1,0 +1,8 @@
+# Staging: frontend replica count
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: artifact-keeper
+spec:
+  replicas: 1

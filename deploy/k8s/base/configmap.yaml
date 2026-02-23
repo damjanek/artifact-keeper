@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: artifact-keeper-config
+  namespace: artifact-keeper
+data:
+  STORAGE_BACKEND: "filesystem"
+  STORAGE_PATH: "/data/storage"
+  RUST_LOG: "info"
+  HOST: "0.0.0.0"
+  PORT: "8080"
+  ENVIRONMENT: "production"
+  CORS_ORIGINS: ""
+  PLUGINS_DIR: "/data/plugins"
+  SCAN_WORKSPACE_PATH: "/scan-workspace"
+  BACKUP_ENABLED: "true"
+  BACKUP_SCHEDULE: "0 2 * * *"
+  BACKUP_PATH: "/data/backups"

@@ -1,0 +1,19 @@
+# Development: lower resource limits for backend
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: artifact-keeper
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: backend
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"

@@ -1,0 +1,19 @@
+# Development: debug logging, no backups
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: artifact-keeper-config
+  namespace: artifact-keeper
+data:
+  STORAGE_BACKEND: "filesystem"
+  STORAGE_PATH: "/data/storage"
+  RUST_LOG: "debug"
+  HOST: "0.0.0.0"
+  PORT: "8080"
+  ENVIRONMENT: "development"
+  CORS_ORIGINS: "http://localhost,https://localhost"
+  PLUGINS_DIR: "/data/plugins"
+  SCAN_WORKSPACE_PATH: "/scan-workspace"
+  BACKUP_ENABLED: "false"
+  BACKUP_SCHEDULE: "0 2 * * *"
+  BACKUP_PATH: "/data/backups"

@@ -1,0 +1,30 @@
+# Production: higher resource limits and pod anti-affinity
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: artifact-keeper
+spec:
+  template:
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                        - backend
+                topologyKey: topology.kubernetes.io/zone
+      containers:
+        - name: backend
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu: "1000m"
+            limits:
+              memory: "4Gi"
+              cpu: "2000m"

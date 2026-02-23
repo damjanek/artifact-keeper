@@ -1,0 +1,35 @@
+# Example StorageClass definitions for cloud providers.
+# Uncomment the section for your cloud provider and apply separately.
+
+# --- AWS EBS ---
+# apiVersion: storage.k8s.io/v1
+# kind: StorageClass
+# metadata:
+#   name: fast-ssd
+# provisioner: ebs.csi.aws.com
+# parameters:
+#   type: gp3
+#   iops: "3000"
+#   throughput: "125"
+# volumeBindingMode: WaitForFirstConsumer
+
+# --- GCP Persistent Disk ---
+# apiVersion: storage.k8s.io/v1
+# kind: StorageClass
+# metadata:
+#   name: fast-ssd
+# provisioner: pd.csi.storage.gke.io
+# parameters:
+#   type: pd-ssd
+#   replication-type: regional-pd
+# volumeBindingMode: WaitForFirstConsumer
+
+# --- Azure Disk ---
+# apiVersion: storage.k8s.io/v1
+# kind: StorageClass
+# metadata:
+#   name: fast-ssd
+# provisioner: disk.csi.azure.com
+# parameters:
+#   skuName: Premium_LRS
+# volumeBindingMode: WaitForFirstConsumer

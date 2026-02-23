@@ -1,0 +1,8 @@
+# Production: higher replica count for backend
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: artifact-keeper
+spec:
+  replicas: 3
